@@ -12,13 +12,13 @@ app.use(response) // adds ctx to your req object. A new response instance is cre
 app.use((req, res) => {
     const { response } = req.ctx
     response
-        .langTo('zh')
-        .message('invalid_token')
-        .message('authenticated_user', {username:'my-username'})
+        .langTo('zh') // sets the response language to chinese, if this function is not called it will default to english.
+        .message('invalid_token') // adds a message detail to the response.
+        .message('authenticated_user', {username:'my-username'}) // adds a message template detail to the response as the first argument, and data as the second.
         .message('invalid_password')
-        .payloadTo({first:'some-data', second:['some-more-data']})
-        .statusTo(500)
-        .send()
+        .payloadTo({first:'some-data', second:['some-more-data']}) // adds a payload to the response
+        .statusTo(500) // sets the response status to 500, if this function is not called it will detault to the status of the first message in the reponse details. if no messages were set it will be 200. 
+        .send() // is the same as calling res.status(200).json(Response)
 })
 ```
 The above code would yield the following response:
