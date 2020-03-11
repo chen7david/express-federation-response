@@ -21,3 +21,44 @@ app.use((req, res) => {
         .send()
 })
 ```
+
+```js
+
+{
+    "id": 9570,
+    "isFederationResponse": true,
+    "status": 500,
+    "lang": "zh",
+    "payload": {
+        "first": "some-data",
+        "second": [
+            "some-more-data"
+            ]
+    },
+    "details": [
+    {
+    "code": "invalid_token",
+    "status": 401,
+    "state": "error",
+    "key": "",
+    "message": "token格式有误 - ER9570."
+    },
+    {
+    "code": "authenticated_user",
+    "status": 200,
+    "state": "info",
+    "key": "",
+    "message": "欢迎回来my-username"
+    },
+    {
+    "code": "invalid_password",
+    "status": 422,
+    "state": "validation",
+    "key": "password",
+    "message": "密码不对"
+    }
+    ],
+    "directives": [],
+    "created": "3/11/2020, 11:19:26 AM"
+    }
+```
