@@ -3,5 +3,6 @@ express-federation-response is a response object created to standardize the resp
 
 ```js
 const { response } = require('./express-federation-response')
+
 app.use(response) // adds ctx to your req object. ctx contains a new response instance for each request.
 ```
