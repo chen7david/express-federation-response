@@ -31,7 +31,7 @@ class Response {
         if(!notification) notification = store.notifications
             .find(el => el.name == 'invalid_message_code')
         let message = this.mutate(notification, data)
-        if(message.state == 'error') message.message = `${message.message} (${this.id})`
+        if(message.state == 'error') message.message = `${message.message} - ${this.id}`
         this.details.push(message)
         return this
     }
