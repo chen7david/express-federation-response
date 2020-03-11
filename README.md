@@ -6,3 +6,18 @@ const { response } = require('./express-federation-response')
 
 app.use(response) // adds ctx to your req object. ctx contains a new response instance for each request.
 ```
+
+## Example 1. Using EFR in your routes
+```js
+app.use((req, res) => {
+    const { response } = req.ctx
+    response
+        .langTo('zh')
+        .message('invalid_token')
+        .message('authenticated_user', {username:'my-username'})
+        .message('invalid_password')
+        .payloadTo({first:'some-data', second:['some-more-data']})
+        .statusTo(500)
+        .send()
+})
+```
