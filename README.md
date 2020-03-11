@@ -7,7 +7,7 @@ const { response } = require('./express-federation-response') // imports the mod
 app.use(response) // adds ctx to your req object. A new response instance is created on each request.
 ```
 
-### example 1: Using EFR in your routes
+### example 1: EFR usage in routes
 ```js
 app.use((req, res) => {
     const { response } = req.ctx
