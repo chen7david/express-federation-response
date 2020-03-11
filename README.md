@@ -21,7 +21,7 @@ app.use((req, res) => {
         .send()
 })
 ```
-
+The above code would yield the following response:
 ```js
 
 {
