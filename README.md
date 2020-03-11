@@ -6,4 +6,5 @@ const express = require('expresss')
 const app = express()
 const server = require('http').createServer(app)
 const { response } = require('./express-federation-response')
+app.use(response) // adds ctx to your req object. ctx contains a new response instance for each request.
 ```
