@@ -3,7 +3,9 @@ express-federation-response is a response object created to standardize the resp
 
 ```js
 const { response } = require('./express-federation-response') // include the module from your packages
+
 const storefile = require('./store.json') // imports the store.js from your file system
+
 app.use(response(storefile)) // adds ctx to your req object. A new response instance is created on each request.
 ```
 
