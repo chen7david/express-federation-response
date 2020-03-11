@@ -6,6 +6,7 @@ express-federation-response is a response object created to standardize the resp
 const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
+const port = 9000
 
 // setting up express-federation-response
 
@@ -14,6 +15,12 @@ const { response } = require('express-federation-response') // include the modul
 const storefile = require('./store.json') // imports the store.js from your file system
 
 app.use(response(storefile)) // adds ctx to your req object. A new response instance is created on each request.
+
+// routes go here ...
+
+server.listen(port, () => {
+    console.log(`server running at http://localhost:${port}`)
+})
 ```
 
 ### example 1: EFR usage in routes
