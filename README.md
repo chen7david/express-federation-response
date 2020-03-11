@@ -4,7 +4,7 @@ express-federation-response is a response object created to standardize the resp
 ```js
 const { response } = require('./express-federation-response') // imports the module from your file system
 
-app.use(response) // adds ctx to your req object. ctx contains a new response instance for each request.
+app.use(response) // adds ctx to your req object. A new response instance is created on each request.
 ```
 
 ### example 1: Using EFR in your routes
