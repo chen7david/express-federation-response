@@ -57,11 +57,19 @@ class Response {
         return this
     }
 
+    clean(){
+        delete this.response
+    }
+
     send(){
         const response = this.response
-        delete this.response
+        this.clean()
         this.status = this.details[0] && !this.status ? this.details[0].status : this.status
         response.status(this.status || 200).json(this)
+    }
+
+    throw(){
+        throw(this)
     }
 }
 
