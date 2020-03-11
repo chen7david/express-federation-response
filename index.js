@@ -1,9 +1,9 @@
 const { template } = require('lodash')
-const store = require('./store.json')
 
 class Response {
     
-    constructor(res){
+    constructor(storefile = null, res){
+        if(!storefile) throw('storefile required!')
         this.id = Math.floor((Math.random() * 9000) + 1000)
         this.isFederationResponse = true
         this.status = null
@@ -13,6 +13,7 @@ class Response {
         this.directives = []  
         this.response = res 
         this.created = new Date().toLocaleString()
+        this.store = storefile
     }
 
     statusTo(status){
@@ -26,12 +27,14 @@ class Response {
     }
 
     message(code, data = null){
-
-        let notification = store.notifications.find(el => el.name == code)
-        if(!notification) notification = store.notifications
-            .find(el => el.name == 'invalid_message_code')
-        let message = this.mutate(notification, data)
-        if(message.state == 'error') message.message = `${message.message} - ${this.id}`
+        let message = code
+        if(this.store){
+            let notification = this.store.notifications.find(el => el.name == code)
+            if(!notification) notification = this.store.notifications
+                .find(el => el.name == 'invalid_message_code')
+            if(notification) message = this.mutate(notification, data)
+            if(message.state == 'error') message.message = `${message.message} - ${this.id}`
+        }
         this.details.push(message)
         return this
     }
@@ -59,6 +62,7 @@ class Response {
 
     clean(){
         delete this.response
+        delete this.store
     }
 
     send(){
@@ -69,14 +73,17 @@ class Response {
     }
 
     throw(){
+        this.clean()
         throw(this)
     }
 }
 
-const response = (req, res, next) => {
-    if(!req.ctx) req.ctx = {}
-    req.ctx.response = new Response(res)
-    next()
+const response = (storefile) => {
+    return (req, res, next) => {
+        if(!req.ctx) req.ctx = {}
+        req.ctx.response = new Response(storefile, res)
+        next()
+    }
 }
 
 module.exports = { Response, response }

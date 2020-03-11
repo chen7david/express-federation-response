@@ -1,0 +1,25 @@
+{
+  "name": "express-federation-response",
+  "version": "1.0.0",
+  "description": "The Federation Response module is a predefined response structure that is used by APIs in the API-Federation Ecosystem (AFE) to serve responses that conform to the R1-Response structure as defined by AFE. This version was modified to support integration with express js. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chen7david/express-federation-response.git"
+  },
+  "keywords": [
+    "response"
+  ],
+  "author": "David M.Chen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chen7david/express-federation-response/issues"
+  },
+  "homepage": "https://github.com/chen7david/express-federation-response#readme",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
