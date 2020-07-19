@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/chen7david/express-federation-response#readme",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   }
 }
